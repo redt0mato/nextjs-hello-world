@@ -29,9 +29,9 @@ export default function IndexPage() {
           pokemons.length &&
           pokemons.map((pokemon, index) => {
             return (
-              <div>
-                <span>{index + 1}.</span>
-                <span>{pokemon.name}</span>
+              <div className="flex flex-row justify-around">
+                <div>{index + 1}.</div>
+                <div>{pokemon.name}</div>
                 <Link href={`/pokemon/${index + 1}`}>Find out more!</Link>
 
                 {/* {JSON.stringify(pokemon)} */}
