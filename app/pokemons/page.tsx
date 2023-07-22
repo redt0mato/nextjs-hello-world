@@ -30,9 +30,9 @@ export default function IndexPage() {
           pokemons.map((pokemon, index) => {
             return (
               <div>
-                <span>{index}.</span>
+                <span>{index + 1}.</span>
                 <span>{pokemon.name}</span>
-                <span>Find out more</span>
+                <Link href={`/pokemon/${index + 1}`}>Find out more!</Link>
 
                 {/* {JSON.stringify(pokemon)} */}
               </div>
