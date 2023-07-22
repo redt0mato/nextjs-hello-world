@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 
 export default function IndexPage({ params }) {
-  const [pokemon, setPokemon] = useState([])
+  const [pokemon, setPokemon] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
@@ -19,8 +19,8 @@ export default function IndexPage({ params }) {
     getData()
   }, [])
 
-  debugger
   if (!pokemon) return <div>Loading...</div>
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
