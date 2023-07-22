@@ -1,3 +1,10 @@
+import { NextResponse } from "next/server"
+
 export async function GET(request: Request) {
-  return new Response("pokemons endpoint hit", { status: 200 })
+  const resp = await fetch(
+    "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+  )
+  const json = await resp.json()
+
+  return NextResponse.json(json, { status: 200 })
 }
