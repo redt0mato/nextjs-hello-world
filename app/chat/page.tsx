@@ -11,8 +11,21 @@ export default function IndexPage() {
     console.log(input)
     console.log("submitted")
   }
+  useEffect(() => {
+    const fetchThing = async () => {
+      const eventSource = new EventSource("/api/chat")
+      eventSource.onmessage = (event) => {
+        console.log(event.data + "\n")
+      }
 
-  console.log(`input ${input}`)
+      eventSource.onerror = (error) => {
+        console.error("EventSource failed:", error)
+        eventSource.close()
+      }
+    }
+    fetchThing()
+  }, [])
+
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
@@ -24,13 +37,6 @@ export default function IndexPage() {
       <div className="flex flex-col"></div>
 
       <form onSubmit={handleSubmit}>
-        <textarea
-          onChange={(e) => {
-            setInput(e.target.value)
-          }}
-        >
-          {input}
-        </textarea>
         <button type="submit">Click Me</button>
       </form>
     </section>
