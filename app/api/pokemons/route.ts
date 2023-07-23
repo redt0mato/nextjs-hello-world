@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export async function GET(request: Request) {
+export async function GET(request: Request, res: Response) {
   const resp = await fetch(
     "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
   )

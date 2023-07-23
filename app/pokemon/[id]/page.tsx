@@ -13,7 +13,6 @@ export default function IndexPage({ params }) {
     const getData = async () => {
       const resp = await fetch(`/api/pokemon/${params.id}`)
       const json = await resp.json()
-      console.log(json)
       setPokemon(json)
     }
     getData()

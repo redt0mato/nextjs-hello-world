@@ -1,22 +1,10 @@
-# next-template
+TO-DO:
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+1. redirect 'home' to pokemons index page.
+2. Add streaming client. Maybe use OpenAI
+3. Add logging use pino or something
 
-## Usage
+   Done
 
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
-
-## Features
-
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+4. Added pokemons page
+5. Added pokemon page
