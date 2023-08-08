@@ -12,18 +12,32 @@ export default function IndexPage() {
     console.log("submitted")
   }
   useEffect(() => {
-    const fetchThing = async () => {
-      const eventSource = new EventSource("/api/chat")
+    const listenSSE = (
+      callback: (event: MessageEvent<any>) => { cancel?: true } | undefined
+    ) => {
+      const eventSource = new EventSource("/api/chat", {
+        withCredentials: true,
+      })
+      console.info("Listenting on SEE", eventSource)
       eventSource.onmessage = (event) => {
-        console.log(event.data + "\n")
+        const result = callback(event)
+        if (result?.cancel) {
+          console.info("Closing SSE")
+          eventSource.close()
+        }
       }
 
-      eventSource.onerror = (error) => {
-        console.error("EventSource failed:", error)
-        eventSource.close()
+      return {
+        close: () => {
+          console.info("Closing SSE")
+          eventSource.close()
+        },
       }
     }
-    fetchThing()
+    listenSSE((e) => {
+      console.log("event")
+      console.log(e)
+    })
   }, [])
 
   return (
